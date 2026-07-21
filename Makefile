@@ -17,9 +17,10 @@ ifeq ($(strip $(RAYLIB_LIBS)),)
 RAYLIB_LIBS := -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 endif
 
-RAYLIB_SRC ?= $(HOME)/raylib/src
+RAYLIB_SRC ?= $(HOME)/dev/raylib/src
 RAYLIB_WEB ?= $(RAYLIB_SRC)/libraylib.web.a
 WEB_FLAGS := -DPLATFORM_WEB -I$(RAYLIB_SRC) \
+			 -sGROWABLE_ARRAYBUFFERS=0 \
              -sUSE_GLFW=3 -sASYNCIFY -sALLOW_MEMORY_GROWTH=1 \
              -sINITIAL_MEMORY=67108864 -sSTACK_SIZE=1048576 \
              --shell-file web/shell.html
